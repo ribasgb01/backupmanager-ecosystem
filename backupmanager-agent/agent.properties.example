@@ -1,0 +1,24 @@
+# Backup Manager Agent - exemplo de configuração.
+# Copie para "agent.properties" ao lado do JAR ou informe o caminho do arquivo
+# como primeiro argumento ao executar o agente.
+# Nunca versione o arquivo agent.properties real: ele contém credenciais.
+
+# URL base do servidor, sem /api/v1 e sem barra final.
+# Em produção, informe um endereço acessível a partir da máquina do supermercado.
+server.url=http://localhost:8080
+
+# API Key exclusiva do mercado cadastrado no Backup Manager Server.
+# Não é um JWT nem uma credencial de usuário do painel.
+server.api-key=COLOQUE_A_API_KEY_DO_MERCADO
+
+# Conexão com o Firebird
+# O db.path deve apontar para o arquivo do banco no servidor Firebird.
+db.host=127.0.0.1
+db.port=3050
+db.path=/caminho/para/seu/banco/market.fdb
+db.user=SYSDBA
+db.password=COLOQUE_A_SENHA_DO_FIREBIRD
+
+# Diretório local para os arquivos temporários de backup (.fbk e compactados).
+# O usuário que executa o agente precisa ter permissão de escrita neste diretório.
+backup.temp-dir=/tmp/backups
