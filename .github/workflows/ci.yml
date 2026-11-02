@@ -1,4 +1,4 @@
-name: Backup Manager - CI
+name: Backup Manager - Server CI
 
 on:
   push:
@@ -17,6 +17,10 @@ jobs:
     name: Server - Build and Tests
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./backupmanager-server
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -28,8 +32,8 @@ jobs:
           java-version: '21'
           cache: maven
           cache-dependency-path: |
-            pom.xml
-            .mvn/wrapper/maven-wrapper.properties
+            backupmanager-server/pom.xml
+            backupmanager-server/.mvn/wrapper/maven-wrapper.properties
 
       - name: Grant permission to Maven Wrapper
         run: chmod +x mvnw
